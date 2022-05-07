@@ -3,25 +3,28 @@
 
 from argparse import ArgumentParser
 from glob import glob
-from PyPDF2 import PdfFileReader, PdfFileWriter
+from PyPDF2 import PdfFileMerger
 import os
+from icecream import ic
 
 
 def merge(path, output_filename):
-    output = PdfFileWriter()
-    f = glob(path + os.sep + '*.pdf')
-    for pdffile in f[::-1]:
-        print(pdffile)
-        if pdffile == output_filename:
-            continue
-        print("Parse '%s'" % pdffile)
-        document = PdfFileReader(open(pdffile, 'rb'))
-        for i in range(document.getNumPages()):
-            output.addPage(document.getPage(i))
+    merger = PdfFileMerger()
+
+    ic(glob(path + os.sep + '*.pdf'))
+    for pdffile in glob(path + os.sep + '*.pdf'):
+
+        ic(pdffile)
+        with open(pdffile, 'rb') as f :
+            merger.append(f)
+    merger.write("result.pdf")
+    merger.close()
+    exit(2)
 
     print("Start writing '%s'" % output_filename)
     with open(output_filename, "wb") as f:
-        output.write(f)
+        pass
+
 
 
 if __name__ == "__main__":
