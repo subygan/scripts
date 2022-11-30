@@ -10,9 +10,9 @@ from pathlib import Path
 
 '''
 usage:
-`python3 merge.py -p ./ignore -o ./ignore/midsem.pdf`
+`python3 merge.py -p ./ignore -o ./ignore/Midsem_SSZG628T_2020MT93520.pdf.pdf`
 
-This command merges all pdfs under the ./ignore directory, in alphabetical order and writes it to ./ignore/midsem.pdf 
+This command merges all pdfs under the ./ignore directory, in alphabetical order and writes it to ./ignore/Midsem_SSZG628T_2020MT93520.pdf.pdf 
 
 '''
 
